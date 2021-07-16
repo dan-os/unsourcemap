@@ -89,8 +89,10 @@ function unsourcemap(raw, options) {
         }
       });
     } else {
-      if (filepath !== null) {
+      if (filepath !== null && sourcemap.sourcesContent[index] !== null) {
         fs.writeFileSync(filepath, sourcemap.sourcesContent[index]);
+      } else {
+        console.log(`Ignoring file: ${filepath}`);
       }
       if (verbose) {
         process.stdout.write(`${filepath} saved successful.\n`);
