@@ -89,7 +89,9 @@ function unsourcemap(raw, options) {
         }
       });
     } else {
-      fs.writeFileSync(filepath, sourcemap.sourcesContent[index]);
+      if (filepath !== null) {
+        fs.writeFileSync(filepath, sourcemap.sourcesContent[index]);
+      }
       if (verbose) {
         process.stdout.write(`${filepath} saved successful.\n`);
       }
